@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
     public int startLife = 1;
     private int health;
     private GameObject generator;
+    private GameObject gameManager;
+    public int pointsValue = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +18,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckLife();
     }
 
     public void SetGenerator(GameObject generator) {
         this.generator = generator;
+    }
+
+    public void SetGameManager(GameObject gameManager)
+    {
+        this.gameManager = gameManager;
     }
 
     public void ResetLife() {
@@ -29,6 +35,8 @@ public class Enemy : MonoBehaviour
 
     void CheckLife() {
         if (health < 1) {
+            Debug.Log("life is < 1");
+            gameManager.GetComponent<GameManager>().AddPoints(pointsValue);
             Destroy();
         } 
     }
@@ -50,7 +58,7 @@ public class Enemy : MonoBehaviour
                 {
                     Hitted(bullet.damage);
                     bullet.Destroy();
-                    Destroy();
+                    CheckLife();
                 }
     }
 }

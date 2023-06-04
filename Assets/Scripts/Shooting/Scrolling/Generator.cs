@@ -15,6 +15,7 @@ public class Generator : MonoBehaviour
     public int rangeX = 2;
     public int rangeZ = 1;
     public int maxSpawnedObjs = 0;
+    public GameObject gameManager;
 
     private GameObject[,] generatedObjects;
     private List<GameObject> spawnedObjs;
@@ -40,6 +41,7 @@ public class Generator : MonoBehaviour
                 if (obj.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
                 {
                     enemy.SetGenerator(this.gameObject);
+                    enemy.SetGameManager(gameManager);
                 }
                 
                 disabledSpawnedObjects.Add(obj);
