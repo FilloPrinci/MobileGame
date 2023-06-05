@@ -10,13 +10,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         pointsText.text = "Points: " + points;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-       
     }
 
     public void SetPoints(int points) {

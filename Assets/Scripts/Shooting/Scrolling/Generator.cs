@@ -30,23 +30,6 @@ public class Generator : MonoBehaviour
             generatedObjects = new GameObject[columns, rows];
             Generate();
         }
-
-        if (maxSpawnedObjs != 0) {
-            limitSpawnedObjs = true;
-            spawnedObjs = new List<GameObject>();
-            disabledSpawnedObjects = new List<GameObject>();
-            for (int i = 0; i < maxSpawnedObjs; i++) {
-                GameObject obj = Instantiate(toBeSpawned, Vector3.back * 100, Quaternion.identity);
-                obj.SetActive(false);
-                if (obj.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
-                {
-                    enemy.SetGenerator(this.gameObject);
-                    enemy.SetGameManager(gameManager);
-                }
-                
-                disabledSpawnedObjects.Add(obj);
-            }
-        }
     }
      
     private void Update()

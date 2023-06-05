@@ -6,22 +6,13 @@ public class Enemy : MonoBehaviour
 {
     public int startLife = 1;
     private int health;
-    private GameObject generator;
     private GameObject gameManager;
     public int pointsValue = 10;
     // Start is called before the first frame update
     void Start()
     {
         health = startLife;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void SetGenerator(GameObject generator) {
-        this.generator = generator;
+        SetGameManager(GameObject.Find("GameManager"));
     }
 
     public void SetGameManager(GameObject gameManager)
@@ -49,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     public void Destroy() {
         ResetLife();
-        generator.GetComponent<Generator>().DeleteObjFromList(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     void OnCollisionEnter(Collision collision)

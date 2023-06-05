@@ -4,31 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    
     public Camera camera;
     public Transform DebugTouchPosition;
-    public Transform bulletSpawnPoint;
-    [Range(0.1f, 2f)]
-    public float fireRate = 1;
-    public GameObject bullet;
-    public int maxTotalBullets = 100;
-
-    private List<GameObject> bullets;
 
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
-        bullets = new List<GameObject>();
-
-        for (int i = 0; i < maxTotalBullets; i++) {
-            GameObject newBullet = Instantiate(bullet, Vector3.back * 100, Quaternion.identity);
-            newBullet.SetActive(false);
-            newBullet.GetComponent<Bullet>().SetGenerator(this.gameObject);
-            bullets.Add(newBullet);
-        }
-
-        StartCoroutine(Shooting());
     }
 
     // Update is called once per frame
@@ -53,27 +35,4 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Shoot() {
-        if (bullets.Count > 0) {
-            GameObject bullet = bullets[bullets.Count - 1];
-            bullets.Remove(bullet);
-            bullet.transform.position = bulletSpawnPoint.position;
-            bullet.SetActive(true);
-        }
-    }
-
-    public void RemoveBullet(GameObject bullet) {
-        bullet.transform.position = Vector3.zero;
-        bullet.SetActive(false);
-        bullets.Add(bullet);
-    }
-
-    IEnumerator Shooting()
-    {
-        for (; ; )
-        {
-            Shoot();
-            yield return new WaitForSeconds(fireRate);
-        }
-    }
 }
