@@ -22,6 +22,7 @@ public class ObjectPool : MonoBehaviour
 
     public void Instantiate()
     {
+        pooledObjects = new List<GameObject>();
         GameObject tmp;
         for (int i = 0; i < amountToPool; i++)
         {

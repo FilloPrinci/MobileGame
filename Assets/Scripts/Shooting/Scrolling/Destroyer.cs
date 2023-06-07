@@ -20,10 +20,8 @@ public class Destroyer : MonoBehaviour
             
             if (collision.gameObject.TryGetComponent<ObjType>(out ObjType objType))
             {
-                Debug.Log("Gameobject has ObjType class");
                 if (objType.type == TypeEnum.Destroyable)
                 {
-                    Debug.Log("Gameobject is destroyable");
 
                     if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
                     {

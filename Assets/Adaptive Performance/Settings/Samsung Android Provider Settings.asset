@@ -173,11 +173,11 @@ MonoBehaviour:
       m_VisualImpact: 2
       m_Target: 7
       m_MaxLevel: 45
-      m_MinBound: 15
+      m_MinBound: 30
       m_MaxBound: 60
     m_AdaptiveResolution:
       m_Name: Adaptive Resolution
-      m_Enabled: 0
+      m_Enabled: 1
       m_Scale: 1
       m_VisualImpact: 0
       m_Target: 6
@@ -314,5 +314,5 @@ MonoBehaviour:
   m_DefaultScalerProfilerIndex: 0
   k_AssetVersion: 2
   m_SamsungProviderLogging: 0
-  m_HighSpeedVRR: 0
+  m_HighSpeedVRR: 1
   m_AutomaticVRR: 1

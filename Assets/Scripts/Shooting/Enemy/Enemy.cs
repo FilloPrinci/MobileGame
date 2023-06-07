@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private int health;
     private GameObject gameManager;
     public int pointsValue = 10;
+    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,6 @@ public class Enemy : MonoBehaviour
 
     void CheckLife() {
         if (health < 1) {
-            Debug.Log("life is < 1");
             gameManager.GetComponent<GameManager>().AddPoints(pointsValue);
             Destroy();
         } 

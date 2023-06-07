@@ -31,7 +31,6 @@ public class Shooting : MonoBehaviour
         bulletPool.Instantiate();
 
         if (bulletPool.pooledObjects != null) {
-            Debug.Log("bulletPool.pooledObjects != null");
             StartCoroutine(ShootingOverRate(fireRate));
 
         }
