@@ -1,20 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FPSCounter : MonoBehaviour
 {
-    [SerializeField] private Text _fpsText;
-    [SerializeField] private float _hudRefreshRate = 1f;
+    public Text _mLabelFPS = null;
 
-    private float _timer;
+    private int _mRenderCount = 0;
+    private DateTime _mRenderTimer = DateTime.MinValue;
 
-    private void Update()
+    void OnRenderObject()
     {
-        if (Time.unscaledTime > _timer)
+        ++_mRenderCount;
+
+        if (_mRenderTimer < DateTime.Now)
         {
-            int fps = (int)(1f / Time.unscaledDeltaTime);
-            _fpsText.text = "FPS: " + fps;
-            _timer = Time.unscaledTime + _hudRefreshRate;
+            _mRenderTimer = DateTime.Now + TimeSpan.FromSeconds(1);
+            if (_mLabelFPS)
+            {
+                _mLabelFPS.text = string.Format("FPS: {0}", _mRenderCount);
+            }
+            _mRenderCount = 0;
         }
     }
 }

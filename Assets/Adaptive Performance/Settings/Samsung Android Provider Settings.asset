@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Samsung Android Provider Settings
   m_EditorClassIdentifier: 
   m_Logging: 1
-  m_AutomaticPerformanceModeEnabled: 1
-  m_EnableBoostOnStartup: 1
+  m_AutomaticPerformanceModeEnabled: 0
+  m_EnableBoostOnStartup: 0
   m_StatsLoggingFrequencyInFrames: 50
   m_IndexerSettings:
-    m_Active: 1
+    m_Active: 0
     m_ThermalActionDelay: 10
     m_PerformanceActionDelay: 4
   m_ScalerSettings:

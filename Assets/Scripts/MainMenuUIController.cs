@@ -9,6 +9,7 @@ public class MainMenuUIController : MonoBehaviour
 
     public void LoadShooterScene() {
         SceneManager.LoadScene(shooterScene, LoadSceneMode.Single);
+        Time.timeScale = 1;
     }
 
 }

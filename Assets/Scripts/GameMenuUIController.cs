@@ -8,9 +8,9 @@ public class GameMenuUIController : MonoBehaviour
     public string playScene = "";
     private string mainMenuScene = "MainMenu";
 
-    public void LoadMainMenuScene()
+    public void Quit()
     {
-        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
+        Application.Quit();
     }
 
     public void PlayGame() {

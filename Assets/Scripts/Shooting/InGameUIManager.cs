@@ -16,6 +16,7 @@ public class InGameUIManager : MonoBehaviour
     public TextMeshProUGUI FPS_TargetText;
     public Slider FPS_TargetSlider;
     public UniversalRenderPipelineAsset renderPipelineAsset;
+    public string shooterScene;
 
     public int FPS_Target;
     public float Resolution_Scale;
@@ -81,8 +82,9 @@ public class InGameUIManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void Quit()
-    {
-        Application.Quit();
+    public void MainMenu() {
+        SceneManager.LoadScene(shooterScene, LoadSceneMode.Single);
+        Time.timeScale = 1;
+
     }
 }
