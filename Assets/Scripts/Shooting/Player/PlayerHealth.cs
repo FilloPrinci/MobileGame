@@ -30,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Hitted(int damage)
     {
+
         if (health > 0)
         {
             health -= damage;

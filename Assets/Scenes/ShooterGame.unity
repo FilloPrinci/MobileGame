@@ -5414,6 +5414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camera: {fileID: 1926470794}
   DebugTouchPosition: {fileID: 727240772}
+  lerpSpeed: 10
 --- !u!114 &1795276647
 MonoBehaviour:
   m_ObjectHideFlags: 0
