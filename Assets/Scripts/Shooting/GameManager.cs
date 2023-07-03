@@ -8,14 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverPanel;
     public TextMeshProUGUI gameOverPoints;
+    public TextMeshProUGUI highScoreText;
     public Text pointsText;
     private int points = 0;
+    private int highScore;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         Application.targetFrameRate = 60;
         pointsText.text = "Points: " + points;
+        highScoreText.text = highScore.ToString();
     }
 
     public void SetPoints(int points) {
@@ -36,6 +41,11 @@ public class GameManager : MonoBehaviour
     public void GameOver() {
         Time.timeScale = 0;
         gameOverPoints.text = "Points : " + points.ToString();
+        if (highScore < points) {
+            highScore = points;
+            highScoreText.text = highScore.ToString();
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
         gameOverPanel.SetActive(true);
     }
 

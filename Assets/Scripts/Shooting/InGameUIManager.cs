@@ -15,19 +15,23 @@ public class InGameUIManager : MonoBehaviour
     public Slider resolutionScaleSlider;
     public TextMeshProUGUI FPS_TargetText;
     public Slider FPS_TargetSlider;
+    public Toggle ShowFPS_Toggle;
     public UniversalRenderPipelineAsset renderPipelineAsset;
     public string shooterScene;
 
     public int FPS_Target;
     public float Resolution_Scale;
+    public bool showFPS;
 
     private void Start()
     {
-        Resolution_Scale = renderPipelineAsset.renderScale;
+        Resolution_Scale = PlayerPrefs.GetFloat("ResolutionScale", renderPipelineAsset.renderScale);
         resolutionScaleSlider.value = Resolution_Scale * 10;
         resolutionScaleText.text = (resolutionScaleSlider.value / 10).ToString();
-        FPS_TargetSlider.value = Application.targetFrameRate / 30;
-        FPS_TargetText.text = Application.targetFrameRate.ToString();
+        FPS_Target = PlayerPrefs.GetInt("FPS_Target", Application.targetFrameRate);
+        FPS_TargetSlider.value = FPS_Target / 30;
+        FPS_TargetText.text = FPS_Target.ToString();
+        showFPS = PlayerPrefs.GetInt("ShowFps", 0) == 1;
     }
 
     public void OpenPauseMenu()
@@ -61,6 +65,7 @@ public class InGameUIManager : MonoBehaviour
         float newScale = sliderValue / 10;
         resolutionScaleText.text = newScale.ToString();
         renderPipelineAsset.renderScale = newScale;
+        PlayerPrefs.SetFloat("ResolutionScale", newScale);
     }
 
     public void SetFPSTarget() {
@@ -68,6 +73,20 @@ public class InGameUIManager : MonoBehaviour
         float newFPS_Target = sliderValue * 30;
         FPS_TargetText.text = newFPS_Target.ToString();
         Application.targetFrameRate = (int)newFPS_Target;
+        PlayerPrefs.SetInt("FPS_Target", (int)newFPS_Target);
+    }
+
+    public void ToggleFPSLabel() {
+        showFPS = ShowFPS_Toggle.isOn;
+        if (showFPS)
+        {
+            // Show Fps
+        }
+        else {
+            // Hide Fps
+        }
+
+        PlayerPrefs.SetInt("ShowFps", showFPS ? 1 : 0);
     }
 
     public void CloseSettings() {
