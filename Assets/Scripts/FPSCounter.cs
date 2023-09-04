@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
+using TMPro;
+
 public class FPSCounter : MonoBehaviour
 {
-    public Text _mLabelFPS = null;
+    public TextMeshProUGUI _mLabelFPS = null;
 
     private int _mRenderCount = 0;
     private DateTime _mRenderTimer = DateTime.MinValue;

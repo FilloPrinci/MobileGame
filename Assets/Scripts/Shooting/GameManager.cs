@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public TextMeshProUGUI gameOverPoints;
     public TextMeshProUGUI highScoreText;
-    public Text pointsText;
+    public TextMeshProUGUI pointsText;
     private int points = 0;
     private int highScore;
 

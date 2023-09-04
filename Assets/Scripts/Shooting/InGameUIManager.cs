@@ -16,6 +16,7 @@ public class InGameUIManager : MonoBehaviour
     public TextMeshProUGUI FPS_TargetText;
     public Slider FPS_TargetSlider;
     public Toggle ShowFPS_Toggle;
+    public TextMeshProUGUI FPSLabel;
     public UniversalRenderPipelineAsset renderPipelineAsset;
     public string shooterScene;
 
@@ -80,10 +81,10 @@ public class InGameUIManager : MonoBehaviour
         showFPS = ShowFPS_Toggle.isOn;
         if (showFPS)
         {
-            // Show Fps
+            FPSLabel.gameObject.SetActive(true);
         }
         else {
-            // Hide Fps
+            FPSLabel.gameObject.SetActive(false);
         }
 
         PlayerPrefs.SetInt("ShowFps", showFPS ? 1 : 0);
